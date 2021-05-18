@@ -4,7 +4,9 @@ from .models import *
 
 admin.site.register(Category)
 admin.site.register(ShowTime)
-admin.site.register(MovieShow)
+admin.site.register(bookmovie)
+admin.site.register(Seat)
+
 
 class AdminMovie(admin.ModelAdmin):
     list_display = ('name', 'category')

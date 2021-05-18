@@ -1,5 +1,5 @@
 from django.db import models
-
+from embed_video.fields import EmbedVideoField
 
 class Category(models.Model):
     title = models.CharField(max_length=40)
@@ -30,12 +30,9 @@ class MoviePost(models.Model):
     language = models.CharField(max_length=10, choices=lang_choice)
     public_date = models.DateField()
     run_length = models.IntegerField(help_text="Enter run length in minutes")
-    trailer = models.URLField(blank=True)
+    trailer = EmbedVideoField()
     image = models.ImageField(null=True, blank=True, upload_to='media')
-
-
-
-
+    time = models.ManyToManyField(ShowTime)
 
     class Meta:
         verbose_name_plural = 'MoviePost'
@@ -43,14 +40,22 @@ class MoviePost(models.Model):
     def __str__(self):
         return self.name
 
+class bookmovie(models.Model):
+    name = models.ForeignKey(MoviePost, on_delete=models.CASCADE)
+    price = models.IntegerField()
+    booked_seats = models.ManyToManyField('Seat', blank=True)
+    created = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self) -> str:
+        return f"{self.name} ({self.price})"
 
 
-class MovieShow(models.Model):
+class Seat(models.Model):
+    seat_no=models.IntegerField()
+    occupant_first_name=models.CharField(max_length=255)
+    occupant_last_name=models.CharField(max_length=255)
+    occupant_email=models.EmailField(max_length=555)
+    purchase_time=models.DateTimeField(auto_now_add=True)
 
-    time_show = models.TimeField()
-    movie = models.ForeignKey(MoviePost, on_delete=models.CASCADE)
-
-
-    def __str__(self):
-        return str(self.movie) + '  |  ' + str(self.time_show)
-
+    def __str__(self) -> str:
+        return f"{self.occupant_first_name}-{self.occupant_last_name} seat_no {self.seat_no}"

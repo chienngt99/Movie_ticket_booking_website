@@ -41,9 +41,9 @@
                 <label class="small mb-2 font-weight-bold d-block text-dark">
                     2D Phụ Đề {{post.language}}
                 </label>
-                    {% for t in timeshow %}
-                  <a href="{{t.time_show}}" class="btn btn-sm btn-showtime disabled btn-light is-redirecting">
-                  <span class="time">{{t.time_show}}</span>
+                    {% for t in post.time.all %}
+                  <a href="{{t.time}}" class="btn btn-sm btn-showtime disabled btn-light is-redirecting">
+                  <span class="time">{{t.time}}</span>
                   </a>
                     {% endfor %}
                 </div>

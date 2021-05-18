@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load embed_video_tags %}
 {% block mdcss %}
 <link rel="stylesheet" href="{% static 'm-detail.css'%}">
 {% endblock mdcss %}
@@ -44,7 +45,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="/mua-ve/lat-mat-5-48h/" class="nav-link text-center">
+                <a href="{% url 'booksite' %}" class="nav-link text-center">
                         Mua vé
                 </a>
             </li>
@@ -53,25 +54,8 @@
 </div>
         <div class="row">
             <div class="col-md-8  left-box ">
-                <div class="js-video youtube widescreen mb-4"><iframe width="729" height="500" src="{{movie_detail.trailer}}" frameborder="0" allowfullscreen=""></iframe></div>
-                <div class="card card-sm">
-                        <div class="card-body">
-                            <h2 class="mb-0">Lịch chiếu</h2>
-                            <p class="text-muted">Chọn khu vực bạn muốn xem lịch chiếu cho phim <strong>Lật Mặt 5: 48H</strong>.</p>
-                            <div class="row">
-                                <div class="col-6 col-sm-8">
-                                    <select class="form-control btn-select-region select2-hidden-accessible" data-toggle="select" tabindex="-1" aria-hidden="true">
-                                        <option value="1">Tp. Hồ Chí Minh</option>
-                                    </select><span class="select2 select2-container select2-container--default" dir="ltr" style="width: 460px;"><span class="selection"><span class="select2-selection select2-selection--single" role="combobox" aria-haspopup="true" aria-expanded="false" tabindex="0" aria-labelledby="select2-ddya-container"><span class="select2-selection__rendered" id="select2-ddya-container" title="Hà Nội">Hà Nội</span><span class="select2-selection__arrow" role="presentation"><b role="presentation"></b></span></span></span><span class="dropdown-wrapper" aria-hidden="true"></span></span>
-                                </div>
-                                <div class="col-6 col-sm-4">
-                                    <a href="#" class="btn btn-dark btn-block btn-do-select-region">Xem lịch chiếu</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="js-video youtube widescreen mb-4">{% video movie_detail.trailer '750x500' %}</div>
 
-                    </div>
                 </div>
             </div>
         </div>
