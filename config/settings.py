@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "film",
     "embed_video",
+    "news"
 ]
 
 MIDDLEWARE = [
