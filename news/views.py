@@ -8,4 +8,8 @@ def index(request):      #add
 
 def detail(request, new_id):
     new = New.objects.get(id=new_id)
-    return render(request, 'news/detail.html', {'new': new})
+    context = {
+        "new": new,
+    }
+
+    return render(request, "news/detail.html", context)

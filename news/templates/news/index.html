@@ -1,69 +1,41 @@
-<html lang="vi">
-    <head>
-        <title>Tin điện ảnh</title>
-        <link rel="stylesheet" href="https://moveek.com/build/main.af106d0e.css"/>
-        <link rel="manifest" href="https://moveek.com/manifest.json"/>
-    </head>
-    <body class="language-vi">
-        <div id="app">
-            <div class="main-content">
-                <div class="bg-dark tix-bg">
-                    <div class="container pt-4 pb-4">
-                        <div class="text-center">
-                            <h1 class="mb-3 text-white">
-                                Tin điện ảnh
-                            </h1>
-                        </div>
+{% extends 'base.html' %}
+{% block content %}
+    <div class="card card-sm mb-3 card-sponsored sponsored-movie-tracking">
+        <div class="new-title" style="text-align: center;">
+        <h2>Movie News</h2>
+    </div>
+    <span class="sprite featured"></span>
+    {% for new in news %}
+      <div class="card" >
+        <div class="card-body">
+            <div class="row" style="padding-left:300px; padding-right: 300px">
+                <div class="col col-sm-2">
+                      <a href="{{film.title}}">
+                        <img src="{{new.poster.url}}" alt="{{new.title}}" class="rounded img-fluid" style="height:200px;">
+                      </a>
                     </div>
+                <div class="col ml-n2">       
+                  
+                    <h1 style="text-align: center;"></h1>
+                    <h3>
+                        {{ new.title }}
+                    </h3>
+                    <div style="width: 900px">
+                        <p>
+                        {{ new.body | truncatechars:450 }}
+                        </p>
+                    </div>
+                
                 </div>
             </div>
-            <div id="article" class="container mt-3">
-                <div class="row">
-                    <div class="col-md-8">
-                        <div class="card card-article card-infinite mb-3">
-                            <div class="card-header bg-light">
-                                <div class="card-header-title">
-                                    Mới nhất
-                                </div>
-                            </div>
-                            <p>Movie Show Here</p>
-                            <h1 style="text-align: center;"></h1>
-
-                            {% for new in news %}
-                            <h3>
-                                {{ new.title }}
-                            </h3>
-                            <div>
-                                {{ new.text | truncatechars:100 }}
-                            </div>
-                            <div style="text-align: right;">
-                                <a href="{% url 'news:detail' new_id=new.id %}">Read More</a>
-                            </div>
-                            {% endfor %}
-
-                        </div>
-                        <a href="#" class="btn btn-light btn-block btn-view-more mb-3">
-                            Xem thêm
-                        </a>
-                        <div class="page-load-status">
-                            <div class="infinite-scroll-request">
-                                <div class="spinner-border" role="status">
-                                    <span class="sr-only">Loading...</span>
-                                </div>
-                            </div>
-                            <p class="infinite-scroll-last">End of content</p>
-                            <p class="infinite-scroll-error">No more pages to load</p>
-                        </div>
-                    </div>
-                    <div class="container">
-                        <div class="col-12 col-sm-5 text-center text-sm-left">
-                            <div class="small text-muted">
-                                Edit By
-                            </div>
-                        </div>
-                    </div>
+            <div class="row" style="padding-left:300px; padding-right: 500px">
+                <div style="text-align: right;">
+                   <a href="{% url 'news:detail' new_id=new.id %}">Read More</a>
                 </div>
-            </div> 
+            </div>
         </div>
-    </body>
-</html>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock content %}
