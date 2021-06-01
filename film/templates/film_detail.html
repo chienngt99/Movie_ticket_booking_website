@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load humanize %}
 {% load embed_video_tags %}
 {% block mdcss %}
   <link rel="stylesheet" href="{% static 'm-detail.css'%}">
@@ -63,7 +64,7 @@
     </div>
   </div>
 
-<<<<<<< HEAD
+
 <br>
   <div class="row col-md-8">
     {% if all_shows %}
@@ -87,34 +88,7 @@
   <div class="row">
     <div class="col-md-8">
       <div class="js-video youtube widescreen mb-4" style="padding-left:150px;">{% video film.trailer '750x500' %}</div>
-=======
-  <div class="bg-white border-bottom sticky-movie-bars">
-    <div class="container">
-      <ul class="nav nav-tabs border-bottom-0">
-        <li class="nav-item">
-          <a href="{% url 'detail' film.id %}" class="nav-link text-center active">
-            Thông tin phim
-          </a>
-        </li>
-        <li class="nav-item">
-          <a href="{% url 'list' %}" class="nav-link text-center">
-            Lịch chiếu
-          </a>
-        </li>
-        <li class="nav-item d-none d-sm-block">
-          <a href="" class="nav-link text-center">Tin tức</a>
-        </li>
-        <li class="nav-item">
-          <a href="#" class="nav-link text-center">Mua vé</a>
-        </li>
-      </ul>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-8 left-box ">
-      <div class="js-video youtube widescreen mb-4" style="padding-left:120px;">{% video film.trailer '750x500' %}</div>
->>>>>>> 755d99322db17aca47c6e991c65c42fa75042b67
     </div>
   </div>
 {% endblock content %}
