@@ -70,8 +70,8 @@
     {% if available_seats %}
     <form action="{% url 'book' showtime.id %}" method="post" >
       {% csrf_token %}
-      <p>Vui lòng chọn chỗ ngồi:</p>
-        <ul>
+      <p style="padding-left:125px;">Vui lòng chọn chỗ ngồi:</p>
+        <ul style="padding-left:150px;">
           {% for seat in available_seats %}
             <div class="form-check">
               <input class="form-check-input" type="checkbox" id="{{ seat.auditorium.code }}.{{ seat.id }}" value="{{ seat.id }}" name="seat_id">
@@ -81,11 +81,11 @@
             </div>
           {% endfor %}
         </ul>
-        <button type="submit" class="btn btn-primary" >Đặt vé</button>
+        <button type="submit" class="btn btn-primary" style="margin-left:125px;" >Đặt vé</button>
     </form>
     {% else %}
       <p>Xin lỗi, hiện tại suất chiếu này đã hết chỗ ngồi. Bạn vui lòng tham khảo các suất chiếu khác!</p>
     {% endif %}
   </div>
-
+<br>
 {% endblock content %}
