@@ -41,9 +41,9 @@
                   <label class="small mb-2 font-weight-bold d-block text-dark">
                     Ngôn ngữ: {{film.languages}}
                   </label>
-                  {% for t in post.time.all %}
-                    <a href="{% url 'MovieDetail' post.id %}" class="btn btn-sm btn-showtime disabled btn-light is-redirecting">
-                      <span class="time">{{t.time}}</span>
+                  {% for showtime in film.showtime_set.all %}
+                    <a href="{% url 'book' showtime.id %}" class="btn btn-sm btn-showtime disabled btn-light is-redirecting">
+                      <span class="time">{{ showtime.time }}</span>
                     </a>
                   {% endfor %}
                 </div>

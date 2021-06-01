@@ -54,9 +54,9 @@ class Customer(models.Model):
         return self.full_name
 
 
-class ShowTime(models.Model):
+class Showtime(models.Model):
     film = models.ForeignKey(Film, on_delete=models.CASCADE)
-    time = models.TimeField()
+    time = models.DateTimeField()
     auditorium = models.ForeignKey(Auditorium, on_delete=models.CASCADE)
     price = models.IntegerField()
 
@@ -72,7 +72,7 @@ class ShowTime(models.Model):
 
 class Booking(models.Model):
     customer = models.ForeignKey(Customer, on_delete=models.CASCADE)
-    showtime = models.ForeignKey(ShowTime, on_delete=models.CASCADE)
+    showtime = models.ForeignKey(Showtime, on_delete=models.CASCADE)
     seat = models.ForeignKey(Seat, on_delete=models.CASCADE)
 
     class Meta:
