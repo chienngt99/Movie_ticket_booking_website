@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load humanize %}
 {% load embed_video_tags %}
 {% block mdcss %}
   <link rel="stylesheet" href="{% static 'm-detail.css'%}">
@@ -64,29 +63,32 @@
     </div>
   </div>
 
-<br>
-  <div class="row col-md-8">
-    {% if all_shows %}
-      <p><b>Lịch chiếu</b></p>
-      <ul>
-        {% for showtime in all_shows %}
-          <li>{{ showtime.time|date:"H:i:s" }}
-             ngày {{ showtime.time|date:"d-m-Y" }}
-             tại phòng chiếu {{ showtime.auditorium }}
-             (giá: {{ showtime.price|intcomma }} VNĐ)
-            {% if showtime.id in bookable_shows %}
-             | <a href="{% url 'book' showtime.id %}">Đặt vé</a></li>
-            {% endif %}
-        {% endfor %}
+  <div class="bg-white border-bottom sticky-movie-bars">
+    <div class="container">
+      <ul class="nav nav-tabs border-bottom-0">
+        <li class="nav-item">
+          <a href="{% url 'detail' film.id %}" class="nav-link text-center active">
+            Thông tin phim
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="{% url 'list' %}" class="nav-link text-center">
+            Lịch chiếu
+          </a>
+        </li>
+        <li class="nav-item d-none d-sm-block">
+          <a href="" class="nav-link text-center">Tin tức</a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link text-center">Mua vé</a>
+        </li>
       </ul>
-    {% else %}
-      <p><b>Chưa có lịch chiếu!</b></p>
-    {% endif %}
+    </div>
   </div>
 
   <div class="row">
-    <div class="col-md-8">
-      <div class="js-video youtube widescreen mb-4">{% video film.trailer '750x500' %}</div>
+    <div class="col-md-8 left-box ">
+      <div class="js-video youtube widescreen mb-4" style="padding-left:120px;">{% video film.trailer '750x500' %}</div>
     </div>
   </div>
 {% endblock content %}
