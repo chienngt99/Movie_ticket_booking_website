@@ -64,11 +64,12 @@
     </div>
   </div>
 
+
 <br>
   <div class="row col-md-8">
     {% if all_shows %}
-      <p><b>Lịch chiếu</b></p>
-      <ul>
+      <p style="padding-left:125px;"><b>Lịch chiếu</b></p>
+      <ul style="padding-left:150px;">
         {% for showtime in all_shows %}
           <li>{{ showtime.time|date:"H:i:s" }}
              ngày {{ showtime.time|date:"d-m-Y" }}
@@ -80,13 +81,14 @@
         {% endfor %}
       </ul>
     {% else %}
-      <p><b>Chưa có lịch chiếu!</b></p>
+      <p style="padding-left:125px;"><b>Chưa có lịch chiếu!</b></p>
     {% endif %}
   </div>
 
   <div class="row">
     <div class="col-md-8">
-      <div class="js-video youtube widescreen mb-4">{% video film.trailer '750x500' %}</div>
+      <div class="js-video youtube widescreen mb-4" style="padding-left:150px;">{% video film.trailer '750x500' %}</div>
+
     </div>
   </div>
 {% endblock content %}
